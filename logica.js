@@ -78,7 +78,7 @@ window.onload = function() {
         if(lives>1) showLives.innerHTML = "Você tem " + lives + " vidas";
         if(lives==1) showLives.innerHTML = "Você tem " + lives + " vida";
         if (lives < 1) {
-            showLives.innerHTML = "Você perdeu!";
+            alert("Você perdeu!");
             for (var i = 0; i < alphabet.length; i++){
                 list = document.getElementById('letter' + i);
                 list.setAttribute("class", "active");
@@ -90,7 +90,6 @@ window.onload = function() {
         }
         for (var i = 0; i < geusses.length; i++) {
             if (counter + space === geusses.length) {
-                showLives.innerHTML = "Parabéns, você ganhou! 😀";
                 for (var i = 0; i < alphabet.length; i++){
                     list = document.getElementById('letter' + i);
                     list.setAttribute("class", "active");
@@ -99,6 +98,7 @@ window.onload = function() {
                 dica = document.getElementById('hint');
                 dica.setAttribute("class", "active");
                 dica.onclick = null;
+                alert("Parabéns, você ganhou! 😀");
             }
         }
     }
