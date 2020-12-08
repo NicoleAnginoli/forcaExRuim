@@ -1,8 +1,8 @@
 window.onload = function() {
 
-    var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-        'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-        't', 'u', 'v', 'w', 'x', 'y', 'z'
+    var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+        'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+        'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
     ];
 
     var categories; // Array of topics
@@ -31,7 +31,7 @@ window.onload = function() {
         for (var i = 0; i < alphabet.length; i++) {
             letters.id = 'alphabet';
             list = document.createElement('li');
-            list.id = 'letter';
+            list.id = 'letter' + i;
             list.innerHTML = alphabet[i];
             check();
             myButtons.appendChild(letters);
@@ -75,13 +75,30 @@ window.onload = function() {
 
     // Show lives
     var comments = function() {
-        showLives.innerHTML = "Você tem +" + lives + " vidas";
+        if(lives>1) showLives.innerHTML = "Você tem " + lives + " vidas";
+        if(lives==1) showLives.innerHTML = "Você tem " + lives + " vida";
         if (lives < 1) {
             showLives.innerHTML = "Você perdeu!";
+            for (var i = 0; i < alphabet.length; i++){
+                list = document.getElementById('letter' + i);
+                list.setAttribute("class", "active");
+                list.onclick = null;
+                dica = document.getElementById('hint');
+                dica.setAttribute("class", "active");
+                dica.onclick = null;
+            }
         }
         for (var i = 0; i < geusses.length; i++) {
             if (counter + space === geusses.length) {
                 showLives.innerHTML = "Parabéns, você ganhou! 😀";
+                for (var i = 0; i < alphabet.length; i++){
+                    list = document.getElementById('letter' + i);
+                    list.setAttribute("class", "active");
+                    list.onclick = null;
+                }
+                dica = document.getElementById('hint');
+                dica.setAttribute("class", "active");
+                dica.onclick = null;
             }
         }
     }
@@ -98,13 +115,13 @@ window.onload = function() {
         myStickman = document.getElementById("stickman");
         context = myStickman.getContext('2d');
         context.beginPath();
-        context.strokeStyle = "#1FF0BD";
+        context.strokeStyle = "#fff";
         context.lineWidth = 4;
     };
 
     head = function() {
         myStickman = document.getElementById("stickman");
-        context.strokeStyle = '#1FF0BD';
+        context.strokeStyle = '#fefefe';
         context.lineWidth = 5;
         context.beginPath();
         context.arc(100, 50, 25, 0, Math.PI * 2, true);
@@ -114,7 +131,7 @@ window.onload = function() {
 
     body = function() {
         myStickman = document.getElementById("stickman");
-        context.strokeStyle = '#1FF0BD';
+        context.strokeStyle = '#fefefe';
         context.beginPath();
         context.moveTo(100, 75);
         context.lineTo(100, 140);
@@ -129,7 +146,7 @@ window.onload = function() {
     }
 
     gallows = function() {
-        context.strokeStyle = '#1FF0BD';
+        context.strokeStyle = '#fefefe';
         myStickman = document.getElementById("stickman");
         context.lineWidth = 10;
         context.beginPath();
@@ -143,7 +160,7 @@ window.onload = function() {
     };
 
     rightHarm = function() {
-        // context.strokeStyle = '#fefefe';
+        context.strokeStyle = '#fefefe';
         context.beginPath();
         context.moveTo(100, 85);
         context.lineTo(60, 100);
@@ -206,7 +223,7 @@ window.onload = function() {
     // OnClick Function
     check = function() {
         list.onclick = function() {
-            var geuss = (this.innerHTML);
+            var geuss = (this.innerHTML.toLowerCase());
             this.setAttribute("class", "active");
             this.onclick = null;
             for (var i = 0; i < word.length; i++) {
@@ -228,7 +245,6 @@ window.onload = function() {
 
 
     // Play
-    //categorias: fruta, cor, animal, objeto, 
     play = function() {
         categories = [
             ["carneiro", "coala", "elefante", "urso", "tucano", "papaguaio", "tartaruga"], /*Animais*/
@@ -255,8 +271,7 @@ window.onload = function() {
     play();
 
     // Hint
-
-    hint.onclick = function() {
+    pegadica = hint.onclick = function() {
 
         hints = [
             ["É um mamifero", "Vive na Austrália", "É um animal de grande porte", "É um mamífero", "É uma ave que tem um bico grande e colorido", "Animal que imita a voz do ser humano", "Tem um casco"],
@@ -267,13 +282,17 @@ window.onload = function() {
         var catagoryIndex = categories.indexOf(chosenCategory);
         var hintIndex = chosenCategory.indexOf(word);
         showClue.innerHTML = "Dica: " + hints[catagoryIndex][hintIndex];
+        this.setAttribute("class", "active");
+        this.onclick = null;
     };
 
     // Reset
-
     document.getElementById('reset').onclick = function() {
         correct.parentNode.removeChild(correct);
         letters.parentNode.removeChild(letters);
+        dica = document.getElementById('hint');
+        dica.setAttribute("class", null);
+        dica.onclick = pegadica;
         showClue.innerHTML = "";
         context.clearRect(0, 0, 400, 400);
         play();
