@@ -57,12 +57,12 @@ p {
 #alphabet {
     margin: 15px auto;
     padding: 0;
-    max-width: 900px;
+    max-width: 200px;
 }
 
 #alphabet:after {
     content: "";
-    display: table;
+    display: flex;
     clear: both;
 }
 
@@ -104,7 +104,7 @@ p {
 }
 
 .active {
-    opacity: 0.4;
+    /*opacity: 0.4;*/
     filter: alpha(opacity=40);
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
@@ -116,7 +116,7 @@ p {
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
-    opacity: 0.4;
+    /*opacity: 0.4;*/
     filter: alpha(opacity=40);
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
@@ -127,6 +127,7 @@ p {
     font-size: 1.6em;
     text-align: center;
     display: block;
+    padding-bottom: 20px;
 }
 
 button {

@@ -53,12 +53,12 @@ p {
 #alphabet {
     margin: 15px auto;
     padding: 0;
-    max-width: 900px;
+    max-width: 150px;
 }
 
 #alphabet:after {
     content: "";
-    display: table;
+    display: flex;
     clear: both;
 }
 
