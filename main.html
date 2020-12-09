@@ -1,25 +1,42 @@
 <html>
-<head>
-<link rel="stylesheet" href="style.css" />
-</head>
-<script type="text/javascript" src="jquery-3.3.1.js"></script>
-<script src="logica.js"></script>
-<div class="wrapper">
-   <h1>Jogo da Forca</h1>
-    <p>Clique nas letras para adivinhar a palavra.</p>
-</div>
-<div class="wrapper">
-    <div id="buttons"> 
-     <canvas id="stickman" width ='300' height='300'>Este texto será exibido se o seu navegador não suportar a tag Canvas do HTML 5.</canvas>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  </head>
+  <script type="text/javascript" src="jquery-3.3.1.js"></script>
+  <script src="logica.js"></script>
+  <body>
+    <div class="wrapper-title">
+      <img src="logo.png" alt="a">
+      <h1 class="title">Jogo da Forca </h1> 
+      <img src="logo.png" alt="a">
     </div>
-    <p id="catagoryName"></p>
-    <div id="hold">
+
+    <div class="flex">
     </div>
-    <p id="mylives"></p>
-    <p id="clue"></p>
-    <div class="container">
-      <button id="hint">Dica</button>
-      <button id="reset">Reiniciar</button>
+    <div id="divglobal">
+        <div id="divstickman">    
+          <canvas id="stickman" width ='400' height='400'>
+            Este texto será exibido se o seu navegador não suportar a tag Canvas do HTML 5.
+          </canvas>
+          <p id="mylives"></p>
+        </div>
+        <div class="2">
+          <div id="guess">
+            <h3><div id="hold"></div></h3>
+            <p style="padding-left: 20px;" id="numLetras"></p>
+          </div>
+          <div id="buttons"></div>
+        
+      <div class="wrapper">
+        <div id="clue"></div>
+        <div class="container">   
+          <button id="hint"><div id="clue">Dica</div></button>  
+          <button id="reset">Reiniciar</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  </body>
 </html>

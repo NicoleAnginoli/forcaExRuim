@@ -4,12 +4,12 @@
 /* Mixin's */
 
 body {
-    background: #2719a1;
+    background: rgb(28, 5, 71);
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    color: rgb(56, 203, 248);
+    color: black;
     height: 100%;
-    text-align: center;
-    font-size: 10px;
+    font-size: 25px;
+    margin: 0px !important;
 }
 
 .wrappper {
@@ -23,27 +23,49 @@ body {
     clear: both;
 }
 
-canvas {
-    color: #fff;
-    border: #fff dashed 2px;
-    padding: 15px;
-}
-
-h1 {
+#divstickman {
+    display: inline-block;
+    margin-left: 30px;
     font-size: 20px;
 }
 
-h2,
+#divglobal {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#buttons {
+    margin-right: 30px;
+    width: 800px;
+}
+
+#clue {
+}
+
+canvas {
+    color: black;
+    border: black solid 2px;
+    padding: 15px;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
 h3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     text-transform: uppercase;
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 h1 {
-    font-size: 45px;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
+    font-size: 200%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 5px 00;
 }
 
 h2 {
@@ -51,38 +73,49 @@ h2 {
 }
 
 p {
-    font-size: 1.6em;
+    font-size: 1.0em;
+}
+
+#texto {
+    font-size: 1.2em;
 }
 
 #alphabet {
     margin: 15px auto;
     padding: 0;
-    max-width: 200px;
+    margin: 0;
+    max-width: 1366px;
 }
 
 #alphabet:after {
     content: "";
-    display: flex;
+    display: table;
     clear: both;
 }
 
 #alphabet li {
     float: left;
-    margin: 0 10px 10px 0;
+    margin: 0 20px 20px 0;
     list-style: none;
-    width: 35px;
-    height: 30px;
-    padding-top: 10px;
-    background: rgb(56, 203, 248);
+    width: 40px;
+    height: 40px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
     color: #ffffff;
     cursor: pointer;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     border-radius: 5px;
     -khtml-border-radius: 5px;
     border: solid 1px #fff;
 }
 
 #alphabet li:hover {
-    background: #c1d72e;
+    transition: all .41s ease;
+    background: #3d3c3c;
     border: solid 1px #fff;
     color: #fff;
 }
@@ -99,13 +132,23 @@ p {
     list-style: none;
     margin: 0;
     display: inline-block;
-    padding: 0 10px;
+    padding: 0 20px;
     font-size: 1.6em;
 }
 
+#catagoryName {
+    font-size: 25px;
+    margin: 0px 10px;
+    font-family: 'Balsamiq Sans', cursive;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2rem;
+}
+
 .active {
-    /*opacity: 0.4;*/
+    opacity: 0.4;
     filter: alpha(opacity=40);
+    color: grey !important;
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -116,7 +159,7 @@ p {
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
-    /*opacity: 0.4;*/
+    opacity: 0.4;
     filter: alpha(opacity=40);
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
@@ -124,33 +167,37 @@ p {
 }
 
 #mylives {
-    font-size: 1.6em;
+    font-size: 70%;
     text-align: center;
     display: block;
-    padding-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
 button {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     border-radius: 5px;
     -khtml-border-radius: 5px;
-    background: rgb(56, 203, 248);
-    color: #fff;
-    border: solid 1px #fff;
+    background: black;
+    color: #696969;
+    border: solid 1px #696969;
     text-decoration: none;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 10px;
     padding: 18px 10px;
-    width: 180px;
+    width: 100px;
     margin: 10px;
     outline: none;
 }
 
 button:hover {
     -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background: #fff;
     border: solid 1px #fff;
-    color: #c1d72e;
+    color: #696969;
 }
 
 @media (max-width: 767px) {
@@ -165,5 +212,49 @@ button:hover {
     }
 }
 
+.title {
+    text-align: center;
+    font-family: 'Balsamiq Sans', cursive;
+    margin-top: 15px;
+}
 
-/*# sourceMappingURL=estilo.css.map */
+
+
+.categoria {
+    margin: 20px 0px 10px 83px;
+    font-family: 'Balsamiq Sans', cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+.wrapper-title {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    height: 78px;
+    width: 50px;
+    margin: 0px 25px;
+}
+
+#guess {
+    margin-bottom: 5%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;  
+}
+
+.flex-categoria {
+    display: flex;  
+}
+
+.num-letras {
+    text-align: center; 
+    font-family: 'Balsamiq Sans', cursive; 
+    font-size: 3rem;
+    margin: 20px 0px 0px 0px;
+}

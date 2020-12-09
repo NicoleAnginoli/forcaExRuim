@@ -9,6 +9,7 @@ window.onload = function() {
     var chosenCategory; // Selected catagory
     var getHint; // Word getHint
     var word; // Selected word
+    var categoria;
     var guess; // Geuss
     var geusses = []; // Stored geusses
     var lives; // Lives
@@ -17,6 +18,7 @@ window.onload = function() {
 
     // Get elements
     var showLives = document.getElementById("mylives");
+    var showResult = document.getElementById("numLetras");
     // var showCatagory = document.getElementById("scatagory");
     var getHint = document.getElementById("hint");
     var showClue = document.getElementById("clue");
@@ -43,11 +45,11 @@ window.onload = function() {
     // Select Catagory
     var selectCat = function() {
         if (chosenCategory === categories[0]) {
-            catagoryName.innerHTML = "Tema: ANIMAIS";
+            categoria = " ANIMAIS";
         } else if (chosenCategory === categories[1]) {
-            catagoryName.innerHTML = "Tema: ALIMENTO";
+            categoria = " ALIMENTOS";
         } else if (chosenCategory === categories[2]) {
-            catagoryName.innerHTML = "Tema: COR";
+            categoria = " CORES";
         }
     }
 
@@ -71,14 +73,28 @@ window.onload = function() {
             wordHolder.appendChild(correct);
             correct.appendChild(guess);
         }
+        letras = word.length;
+        document.getElementById("numLetras").innerHTML = "A palavra tem " + letras + " letras</b></span> e é sobre " + categoria + "</b></span>";
     }
 
     // Show lives
     var comments = function() {
-        if(lives>1) showLives.innerHTML = "Você tem " + lives + " vidas";
-        if(lives==1) showLives.innerHTML = "Você tem " + lives + " vida";
+        if (lives == 1){
+            showLives.innerHTML = "Você pode errar mais " + lives + " vez";
+        }
+        else if (lives == 9) {
+            showLives.innerHTML = "Você pode errar " + lives + " vezes";
+        }
+        else {
+            showLives.innerHTML = "Você pode errar mais " + lives + " vezes";
+        }
+        
         if (lives < 1) {
-            alert("Você perdeu!");
+            showResult.innerHTML = "Você perdeu 😔";
+            showResult.setAttribute("class","num-letras");
+            //myButtons.setAttribute("hidden", "true");
+            dica = document.getElementById('hint');
+            dica.classList.remove("active");
             for (var i = 0; i < alphabet.length; i++){
                 list = document.getElementById('letter' + i);
                 list.setAttribute("class", "active");
@@ -90,6 +106,11 @@ window.onload = function() {
         }
         for (var i = 0; i < geusses.length; i++) {
             if (counter + space === geusses.length) {
+                showResult.innerHTML = "Parabéns, você ganhou! 😀";
+                showResult.setAttribute("class","num-letras");
+                dica = document.getElementById('hint');
+                dica.classList.remove("active");
+                //myButtons.setAttribute("hidden", "true");
                 for (var i = 0; i < alphabet.length; i++){
                     list = document.getElementById('letter' + i);
                     list.setAttribute("class", "active");
@@ -98,7 +119,6 @@ window.onload = function() {
                 dica = document.getElementById('hint');
                 dica.setAttribute("class", "active");
                 dica.onclick = null;
-                alert("Parabéns, você ganhou! 😀");
             }
         }
     }
@@ -121,20 +141,20 @@ window.onload = function() {
 
     head = function() {
         myStickman = document.getElementById("stickman");
-        context.strokeStyle = '#fefefe';
+        context.strokeStyle = 'black';
         context.lineWidth = 5;
         context.beginPath();
-        context.arc(100, 50, 25, 0, Math.PI * 2, true);
+        context.arc(200, 100, 35, 0, Math.PI * 2, true);
         context.closePath();
         context.stroke();
     }
 
     body = function() {
         myStickman = document.getElementById("stickman");
-        context.strokeStyle = '#fefefe';
+        context.strokeStyle = 'black';
         context.beginPath();
-        context.moveTo(100, 75);
-        context.lineTo(100, 140);
+        context.moveTo(200, 135);
+        context.lineTo(200, 230);
         context.stroke();
     }
 
@@ -146,67 +166,60 @@ window.onload = function() {
     }
 
     gallows = function() {
-        context.strokeStyle = '#fefefe';
+        context.strokeStyle = 'black';
         myStickman = document.getElementById("stickman");
         context.lineWidth = 10;
         context.beginPath();
-        context.moveTo(175, 225);
-        context.lineTo(5, 225);
-        context.moveTo(40, 225);
-        context.lineTo(25, 5);
-        context.lineTo(100, 5);
-        context.lineTo(100, 25);
+        context.moveTo(380, 380);
+        context.lineTo(20, 380);
+        context.moveTo(100, 380);
+        context.lineTo(40, 20);
+        context.lineTo(200, 20);
+        context.lineTo(200, 65);
         context.stroke();
     };
 
     rightHarm = function() {
-        context.strokeStyle = '#fefefe';
+        context.strokeStyle = 'black';
         context.beginPath();
-        context.moveTo(100, 85);
-        context.lineTo(60, 100);
+        context.moveTo(200, 150);
+        context.lineTo(160, 170);
         context.stroke();
     };
 
     leftHarm = function() {
         context.beginPath();
-        context.moveTo(100, 85);
-        context.lineTo(140, 100);
-        context.stroke();
-    };
-
-    rightLeg = function() {
-        context.beginPath();
-        context.moveTo(100, 140);
-        context.lineTo(80, 190);
+        context.moveTo(200, 150);
+        context.lineTo(240, 170);
         context.stroke();
     };
 
     rightFoot = function() {
         context.beginPath();
-        context.moveTo(82, 190);
-        context.lineTo(70, 185);
+        context.moveTo(177, 300);
+        context.lineTo(165, 290);
         context.stroke();
     };
 
 
     leftFoot = function() {
         context.beginPath();
-        context.moveTo(122, 190);
-        context.lineTo(135, 185);
+        context.moveTo(223, 300);
+        context.lineTo(235, 290);
         context.stroke();
     };
 
     rightLeg = function() {
         context.beginPath();
-        context.moveTo(100, 140);
-        context.lineTo(80, 190);
+        context.moveTo(200, 225);
+        context.lineTo(175, 300);
         context.stroke();
     };
 
     leftLeg = function() {
         context.beginPath();
-        context.moveTo(100, 140);
-        context.lineTo(125, 190);
+        context.moveTo(200, 225);
+        context.lineTo(225, 300);
         context.stroke();
     };
 
@@ -227,7 +240,7 @@ window.onload = function() {
             this.setAttribute("class", "active");
             this.onclick = null;
             for (var i = 0; i < word.length; i++) {
-                if (word[i] === geuss) {
+                if (word[i] == geuss) {
                     geusses[i].innerHTML = geuss;
                     counter += 1;
                 }
@@ -247,8 +260,8 @@ window.onload = function() {
     // Play
     play = function() {
         categories = [
-            ["carneiro", "coala", "elefante", "urso", "tucano", "papaguaio", "tartaruga"], /*Animais*/
-            ["sushi", "pizza", "estrogonofe", "sorvete", "pastel"], /*Comida*/
+            ["carneiro", "coala", "elefante", "urso", "tucano", "papagaio", "tartaruga"], /*Animais*/
+            ["sushi", "pizza", "sorvete", "pastel"], /*Comida*/
             ["amarelo", "vermelho", "preto", "roxo", "marrom"] /*Cor*/
         ];
 
@@ -262,9 +275,9 @@ window.onload = function() {
         lives = 9;
         counter = 0;
         space = 0;
+        selectCat();
         result();
         comments();
-        selectCat();
         canvas();
     }
 
@@ -274,8 +287,8 @@ window.onload = function() {
     pegadica = hint.onclick = function() {
 
         hints = [
-            ["É um mamifero", "Vive na Austrália", "É um animal de grande porte", "É um mamífero", "É uma ave que tem um bico grande e colorido", "Animal que imita a voz do ser humano", "Tem um casco"],
-            ["Surgiu no Japão", "Comida redonda", "Prato que surgiu na Rússia", "Sobremesa gelada", "Comida frita que tem recheio"],
+            ["é um mamífero", "vive na Austrália", "é um animal de grande porte", "é um mamífero", "é uma ave que tem um bico grande e colorido", "animal que imita a voz do ser humano", "tem um casco"],
+            ["surgiu no Japão", "comida italiana", "sobremesa gelada", "comida frita recheada"],
             ["a cor lembra o Sol", "se parece com sangue", "a cor da escuridão", "lembra uma uva", "parece café"]
         ];
 
@@ -288,10 +301,12 @@ window.onload = function() {
 
     // Reset
     document.getElementById('reset').onclick = function() {
+        myButtons.removeAttribute("hidden");
+        showResult.classList.remove("num-letras");
         correct.parentNode.removeChild(correct);
         letters.parentNode.removeChild(letters);
         dica = document.getElementById('hint');
-        dica.setAttribute("class", null);
+        dica.classList.remove("active");
         dica.onclick = pegadica;
         showClue.innerHTML = "";
         context.clearRect(0, 0, 400, 400);
