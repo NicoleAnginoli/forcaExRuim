@@ -4,7 +4,7 @@
 /* Mixin's */
 
 body {
-    background: rgb(28, 5, 71);
+    background: rgb(47, 9, 117);
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     color: black;
     height: 100%;
@@ -146,7 +146,7 @@ p {
 }
 
 .active {
-    opacity: 0.4;
+    /* opacity: 0.4; */
     filter: alpha(opacity=40);
     color: grey !important;
     -moz-transition: all 1s ease-in;
@@ -159,7 +159,7 @@ p {
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
-    opacity: 0.4;
+    /* opacity: 0.4; */
     filter: alpha(opacity=40);
     -moz-transition: all 1s ease-in;
     -moz-transition: all 0.3s ease-in-out;
@@ -167,7 +167,7 @@ p {
 }
 
 #mylives {
-    font-size: 70%;
+    font-size: 100%;
     text-align: center;
     display: block;
     margin-top: 10px;
@@ -180,7 +180,7 @@ button {
     border-radius: 5px;
     -khtml-border-radius: 5px;
     background: black;
-    color: #696969;
+    color: #ffffff;
     border: solid 1px #696969;
     text-decoration: none;
     cursor: pointer;
@@ -197,7 +197,7 @@ button:hover {
     transition: all 0.3s ease-in-out;
     background: #fff;
     border: solid 1px #fff;
-    color: #696969;
+    color: #3d3d3d;
 }
 
 @media (max-width: 767px) {
