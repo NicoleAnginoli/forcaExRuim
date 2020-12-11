@@ -90,7 +90,7 @@ window.onload = function() {
         }
         
         if (lives < 1) {
-            showResult.innerHTML = "Você perdeu 😔";
+            alert("Você perdeu 😔");
             showResult.setAttribute("class","num-letras");
             //myButtons.setAttribute("hidden", "true");
             dica = document.getElementById('hint');
@@ -106,7 +106,7 @@ window.onload = function() {
         }
         for (var i = 0; i < geusses.length; i++) {
             if (counter + space === geusses.length) {
-                showResult.innerHTML = "Parabéns, você ganhou! 😀";
+                alert("Parabéns, você ganhou! 😀");
                 showResult.setAttribute("class","num-letras");
                 dica = document.getElementById('hint');
                 dica.classList.remove("active");
